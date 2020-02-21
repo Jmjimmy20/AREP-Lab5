@@ -1,4 +1,6 @@
-import java.io.*; 
+package edu.escuelaing.arep.app;
+
+import java.io.*;
 import java.net.*; 
 public class URLReader { 
   public static void main(String[] args) throws Exception { 
