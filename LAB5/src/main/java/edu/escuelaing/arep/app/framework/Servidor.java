@@ -10,7 +10,7 @@ import java.util.Map;
 
 import edu.escuelaing.arep.app.framework.DataBase;
 
-public class Servidor {
+public class Servidor implements Runnable{
 
     int Port;
 
@@ -29,16 +29,27 @@ public class Servidor {
     String Tcontenido;
     private Map<String,Method> URLmap = new HashMap<String, Method>();
 
-    public Servidor(Map<String,Method> url) throws IOException{
+    public Servidor(Map<String,Method> url, ServerSocket socketServer) throws IOException{
 
         this.URLmap = url;
+        socket = socketServer.accept();
+    }
+
+    @Override
+    public void run() {
+        try {
+            Start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void Start() throws IOError, IOException {
         
         while(true){
             Port = getPort();          
-            IniciadorAtributosConexion(Port);
+            IniciadorAtributosConexion();
 
             try {
                 socket = serverSocket.accept();
@@ -98,13 +109,8 @@ public class Servidor {
      * Metodo iniciador del socket del servidor y de los distintos atributos necesarios para mostrar las imagenes y las paginas
      * @param puerto
      */
-    public void IniciadorAtributosConexion(int puerto){
-        try {
-            serverSocket = new ServerSocket(puerto);    
-        } catch (IOException e) {
-            System.err.println("No se realiza ninguna conexion por el puerto:" + puerto);
-            System.exit(1);
-        }
+    public void IniciadorAtributosConexion(){
+        
         printWriter = null;
         bufferedReader = null;
         bufferedOutputStream = null;
@@ -335,5 +341,7 @@ public class Servidor {
               "</html>";
            printWriter.println(outString);
      }
+
+
 
 }
