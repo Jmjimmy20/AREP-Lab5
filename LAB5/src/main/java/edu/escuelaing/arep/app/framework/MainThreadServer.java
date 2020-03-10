@@ -16,18 +16,18 @@ public class MainThreadServer{
     ServerSocket socket;
     private Map<String, Method> mapeoURL = new HashMap<String, Method>();
     private ExecutorService executorService;
-    private boolean bandera;
+    private boolean server;
     
     public MainThreadServer(int Nthread) throws IOException{
         socket = new ServerSocket(getPuerto());
         mapeoURL = Manager.getPathC();
         executorService = Executors.newFixedThreadPool(Nthread);
-        bandera = true;
+        server = true;
     }
     
     
     public void Start(){
-        while (bandera) {
+        while (server) {
             try {
                 executorService.execute(new Servidor(mapeoURL, socket));
             } catch (IOException e) {

@@ -8,7 +8,7 @@ public class ClienteMain{
     public static void main(String[] args) {
         int numeroThreads = Integer.parseInt(args[0]);
         ThreadInit iniciadorThreadsCliente = new ThreadInit(numeroThreads);
-        iniciadorThreadsCliente.Start("https://secure-garden-73536.herokuapp.com");
+        iniciadorThreadsCliente.Start("https://frozen-caverns-49125.herokuapp.com");
         
     }
 }

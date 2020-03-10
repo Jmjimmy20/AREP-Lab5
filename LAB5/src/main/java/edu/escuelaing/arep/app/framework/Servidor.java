@@ -47,50 +47,40 @@ public class Servidor implements Runnable{
 
     public void Start() throws IOError, IOException {
         
-        while(true){
-            Port = getPort();          
-            IniciadorAtributosConexion();
+        IniciadorAtributosConexion();
 
-            try {
-                socket = serverSocket.accept();
+        RealizadorConexionStream();
 
-            } catch (IOException e) {
-                System.err.println("Fallo al aceptar el puerto del cliente.");
-                System.exit(1);
+
+        while ((inputLine = bufferedReader.readLine()) != null) {
+            if(inputLine.startsWith("GET")){
+
+                archivo = inputLine.substring(inputLine.indexOf("/") + 1, inputLine.indexOf("HTTP"));
             }
-
-            RealizadorConexionStream();
-
-            while ((inputLine = bufferedReader.readLine()) != null) {
-                if(inputLine.startsWith("GET")){
-
-                    archivo = inputLine.substring(inputLine.indexOf("/") + 1, inputLine.indexOf("HTTP"));
-                }
-                if (!bufferedReader.ready()){
-                    break;
-                } 
-            }
-
-            if(archivo.equals(" ") || archivo.equals("/")) {
-                archivo = "notfound.html";
-            }
-
-            if (archivo.equals("editores ")){
-                MostrarPaginaDB();
-            }
-
-            else if (archivo.startsWith("api")){
-                MostrarPaginaAPI();
-            }
-
-            else if(!archivo.equals("/")){
-
-                CreacionArchivo();
-            }
-
-            printWriter.flush();
-            CerrarTodo();
+            if (!bufferedReader.ready()){
+                break;
+            } 
         }
+
+        if(archivo.equals(" ") || archivo.equals("/")) {
+            archivo = "notfound.html";
+        }
+
+        if (archivo.equals("editores ")){
+            MostrarPaginaDB();
+        }
+
+        else if (archivo.startsWith("api")){
+            MostrarPaginaAPI();
+        }
+
+        else if(!archivo.equals("/")){
+
+            CreacionArchivo();
+        }
+
+        printWriter.flush();
+        CerrarTodo();
     }
 
 
