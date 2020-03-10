@@ -1,0 +1,11 @@
+edu\escuelaing\arep\app\framework\annotatations\webAnotac.class
+edu\escuelaing\arep\app\framework\DataBase.class
+edu\escuelaing\arep\app\cliente\ClienteMain.class
+edu\escuelaing\arep\app\pojos\webP.class
+edu\escuelaing\arep\app\MainApp.class
+edu\escuelaing\arep\app\framework\MainThreadServer.class
+edu\escuelaing\arep\app\framework\annotatations\serverAnotac.class
+edu\escuelaing\arep\app\cliente\Cliente.class
+edu\escuelaing\arep\app\cliente\ThreadInit.class
+edu\escuelaing\arep\app\framework\Servidor.class
+edu\escuelaing\arep\app\Manager.class

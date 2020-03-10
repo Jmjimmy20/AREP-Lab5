@@ -29,26 +29,22 @@ public class Cliente implements Runnable {
         
     }
 
-    /**
- * Metodo que muestra en pantalla el tiempo de duracion edl thread y  la info de la pagina
- * @throws MalformedURLException 
- */
-  public void Apag() throws MalformedURLException {
-    URL url = new URL(pagina); 
-    try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()))) 
-    { 
-      String inputLine = null; 
-      while ((inputLine = reader.readLine()) != null) { 
-        System.out.println(inputLine); 
-      }
+    public void Apag() throws MalformedURLException {
+      URL url = new URL(pagina); 
+      try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()))) 
+      { 
+        String inputLine = null; 
+        while ((inputLine = reader.readLine()) != null) { 
+          System.out.println(inputLine); 
+        }
 
-    } catch (IOException x) { 
-             System.err.println(x); 
-    } 
-    
-    long tiempoTermino = System.nanoTime();
-    System.out.println("Tiempo de ejecucion :" + (double)((tiempoTermino - tiempo) / 1000000000.0));
-    
-    
-  }
+      } catch (IOException x) { 
+              System.err.println(x); 
+      } 
+      
+      long tiempoTermino = System.nanoTime();
+      System.out.println("Tiempo de ejecucion :" + (double)((tiempoTermino - tiempo) / 1000000000.0));
+      
+      
+    }
 }

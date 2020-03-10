@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import edu.escuelaing.arep.app.framework.annotatations.serverAnotac;
 import edu.escuelaing.arep.app.framework.annotatations.webAnotac;
 
@@ -91,6 +90,18 @@ public class Manager{
                     anWeb = (webAnotac) metodo.getAnnotation(webAnotac.class);
                     URLHandler.put(anServer.path() + anWeb.path(), metodo);
                 }
+            }
+        }
+    }
+
+
+
+    public static void ObtenerURL(Class clase, serverAnotac anotacionServer, Map<String, Method> URLHandler){
+        webAnotac anotacionWeb;
+        for (Method metodo : clase.getMethods()) {
+            if (metodo.isAnnotationPresent(webAnotac.class)) {
+                anotacionWeb = (webAnotac) metodo.getAnnotation(webAnotac.class);
+                URLHandler.put(anotacionServer.path() + anotacionWeb.path(), metodo);
             }
         }
     }

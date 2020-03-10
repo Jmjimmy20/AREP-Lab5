@@ -107,7 +107,6 @@ public class Servidor implements Runnable{
 
     /**
      * Metodo iniciador del socket del servidor y de los distintos atributos necesarios para mostrar las imagenes y las paginas
-     * @param puerto
      */
     public void IniciadorAtributosConexion(){
         

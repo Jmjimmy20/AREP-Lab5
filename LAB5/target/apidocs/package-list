@@ -1,1 +1,5 @@
 edu.escuelaing.arep.app
+edu.escuelaing.arep.app.cliente
+edu.escuelaing.arep.app.framework
+edu.escuelaing.arep.app.framework.annotatations
+edu.escuelaing.arep.app.pojos
